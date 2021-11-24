@@ -1,12 +1,12 @@
 Rails.application.routes.draw do
 
-
+  get("/text",  { :controller => "magic", :action => "text_form" })
   
-
+  post("/process_text", { :controller => "magic", :action => "text_results" })
 
   # =============================
 
-  get("/",  { :controller => "vision", :action => "homepage" })
+  get("/vision",  { :controller => "vision", :action => "homepage" })
 
   get("/vision/:detector", { :controller => "vision", :action => "form" })
   post("/vision/:detector", { :controller => "vision", :action => "magic" })

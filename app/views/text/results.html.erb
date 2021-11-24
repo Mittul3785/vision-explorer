@@ -1,0 +1,16 @@
+<h1>Text Results</h1>
+
+<ul>
+<% @first_result.text_annotations.each_with_index do |text_annotation, index| %>
+    <li>
+    <details>
+    <summary>
+      <code><%= index %></code>
+    </summary>
+    <div>
+      <%= raw(ap text_annotation.to_h) %>
+    </div>
+  </li>
+<% end %>
+</ul>  
+
