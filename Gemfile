@@ -5,7 +5,9 @@ ruby '2.6.5'
 
 gem "google-cloud-translate"
 
-gem "google-cloud-vision"
+gem "google-cloud-vision", "0.38.0"
+
+gem "google-cloud-vision-v1"
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'amazing_print'
