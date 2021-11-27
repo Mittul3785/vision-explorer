@@ -6,6 +6,9 @@ class MagicController < ApplicationController
 
  def text_results
    # params.fetch("zebra")
+   # Parameters: {"vscodeBrowserReqId"=>"1637979480643"}
+   # Parameters: {"zebra"=>#<ActionDispatch::Http::UploadedFile:0x00007f7389684d50 @tempfile=#<Tempfile:/tmp/RackMultipart20211127-1995-nktpqu.jpg>, @original_filename="pid exa (2).jpg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"zebra\"; filename=\"pid exa (2).jpg\"\r\nContent-Type: image/jpeg\r\n">}
+
 
     require "google/cloud/vision"
   
@@ -20,6 +23,13 @@ class MagicController < ApplicationController
     @responses = vision_api_results.responses
   
     @first_result = vision_api_results.responses.at(0)
+
+   # @parsed_data = JSON.parse(@first_result)
+
+    # .class = Google::Protobuf::RepeatedField
+    # JSON.parse("")
+    # CSV.parse("")
+
 
    render({:template => "text/results.html.erb"})
  end
