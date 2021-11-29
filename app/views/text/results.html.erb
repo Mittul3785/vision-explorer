@@ -1,5 +1,7 @@
 <h1>Text Results</h1>
 
+# raw(ap text_annotation.to_h) %> original command in each loop
+
 <ul>
 <% @first_result.text_annotations.each_with_index do |text_annotation, index| %>
     <li>
@@ -8,7 +10,7 @@
       <code><%= index %></code>
     </summary>
     <div>
-      <%= raw(ap text_annotation.to_h) %>
+      <%= raw(ap text_annotation['description'].to_s) %>
     </div>
   </li>
 <% end %>
