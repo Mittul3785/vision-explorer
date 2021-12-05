@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get("/export_text", { :controller => "text", :action => "export" })
+
   get("/text",  { :controller => "magic", :action => "text_form" })
   
   post("/process_text", { :controller => "magic", :action => "text_results" })
