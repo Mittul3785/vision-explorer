@@ -1,6 +1,8 @@
+<a href="/<%= @file_to_download %>">Download CSV</a>
+
 <h1>Text Results</h1>
 
-<a href="/export_text.csv">Export as CSV</a>
+<%= link_to("Export", "/text_results.csv", method: :post) %>
 
 # raw(ap text_annotation.to_h) %> original command in each loop
 

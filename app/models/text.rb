@@ -14,3 +14,9 @@ class Text < ApplicationRecord
     return csv
  end
 end
+
+# add validations
+
+# validates(:subject, { :presence => true })
+
+# validates(:body, { :presence => true })

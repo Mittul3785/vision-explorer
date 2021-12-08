@@ -24,14 +24,40 @@ class MagicController < ApplicationController
   
     @first_result = vision_api_results.responses.at(0)
 
+    # CSV Generation
+    headers = ["description"]
+    csv = CSV.generate(headers: true) do |csv|
+        csv << headers
+        @first_result.text_annotations.each_with_index do |text_annotation, index| 
+         x = text_annotation['description'].to_s
+          # text.each do |text|
+            row = []
+            row.push(x)
+            csv << row
+        end
+     end
+
    # @parsed_data = JSON.parse(@first_result)
 
     # .class = Google::Protobuf::RepeatedField
     # JSON.parse("")
     # CSV.parse("")
 
-
+    filename = "text.csv"
+    file_path = Rails.root.join("public", filename)
+    # Temporarily saves the csv file in the public folder so it can be downloaded
+    File.open(file_path, "w") do |file|
+      file.write(csv)
+    end
+    @file_to_download = filename
+ #   respond_to do |format|
+ #     format.html do
+ #       render({:template => "text/results.html.erb"})
+ #     end
+ #     format.csv do
+ #         send_data(csv, { :filename => "text.csv"})
+ #     end
+ # end
    render({:template => "text/results.html.erb"})
  end
-
 end
